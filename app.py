@@ -24,11 +24,11 @@ def dataset_display(file1,file2):
         try:
             df2=pd.read_excel(file2.name,dtype=str)
             for i in range(len(df2.index)):
-                dict1[list(df2[i:i+1].ACCOUNT_NAME)[0]].append((list(df2[i:i+1]['ENTITLEMENT VALUE'])[0]))
+                dict2[list(df2[i:i+1].ACCOUNT_NAME)[0]].append((list(df2[i:i+1]['ENTITLEMENT VALUE'])[0]))
 
             df1=pd.read_excel(file1.name,dtype=str)
             for i in range(len(df1.index)):
-                dict2[list(df1[i:i+1].UNAME)[0]].append((list(df1[i:i+1].AGR_NAME)[0]))
+                dict1[list(df1[i:i+1].UNAME)[0]].append((list(df1[i:i+1].AGR_NAME)[0]))
 
         except:
             df2=pd.read_csv(file1.name,dtype=str)
@@ -50,7 +50,7 @@ def dataset_display(file1,file2):
         row.append(dict2[item])
         rows.append(row)
 
-    out2 = pd.DataFrame(rows,columns = ['UNAME','AGR_NAME'] ['ACCOUNT_NAME','ENTITLEMENT VALUE'])
+    out2 = pd.DataFrame(rows,columns = ['ACCOUNT_NAME','ENTITLEMENT VALUE'])
     
     cach_1 = out1
     cach_2 = out2
