@@ -22,13 +22,13 @@ def dataset_display(file1,file2):
   
     if (split_tup_1[1] and split_tup_2[1]) == '.xlsx' :
         try:
-            df2=pd.read_excel(file1.name,dtype=str)
-            for i in range(len(df1.index)):
-                dict1[list(df1[i:i+1].ACCOUNT_NAME)[0]].append((list(df1[i:i+1]['ENTITLEMENT VALUE'])[0]))
-
-            df1=pd.read_excel(file2.name,dtype=str)
+            df2=pd.read_excel(file2.name,dtype=str)
             for i in range(len(df2.index)):
-                dict2[list(df2[i:i+1].UNAME)[0]].append((list(df2[i:i+1].AGR_NAME)[0]))
+                dict1[list(df2[i:i+1].ACCOUNT_NAME)[0]].append((list(df2[i:i+1]['ENTITLEMENT VALUE'])[0]))
+
+            df1=pd.read_excel(file1.name,dtype=str)
+            for i in range(len(df1.index)):
+                dict2[list(df1[i:i+1].UNAME)[0]].append((list(df1[i:i+1].AGR_NAME)[0]))
 
         except:
             df2=pd.read_csv(file1.name,dtype=str)
