@@ -22,35 +22,35 @@ def dataset_display(file1,file2):
   
     if (split_tup_1[1] and split_tup_2[1]) == '.xlsx' :
         try:
-            df1=pd.read_excel(file1.name,dtype=str)
+            df2=pd.read_excel(file1.name,dtype=str)
             for i in range(len(df1.index)):
                 dict1[list(df1[i:i+1].ACCOUNT_NAME)[0]].append((list(df1[i:i+1]['ENTITLEMENT VALUE'])[0]))
 
-            df2=pd.read_excel(file2.name,dtype=str)
+            df1=pd.read_excel(file2.name,dtype=str)
             for i in range(len(df2.index)):
                 dict2[list(df2[i:i+1].UNAME)[0]].append((list(df2[i:i+1].AGR_NAME)[0]))
 
         except:
-            df1=pd.read_csv(file1.name,dtype=str)
+            df2=pd.read_csv(file1.name,dtype=str)
             for i in range(len(df1.index)):
                 dict1[list(df1[i:i+1].ACCOUNT_NAME)[0]].append((list(df1[i:i+1]['ENTITLEMENT VALUE'])[0]))
 
-            df2=pd.read_csv(file2.name,dtype=str)
+            df1=pd.read_csv(file2.name,dtype=str)
             for i in range(len(df2.index)):
                 dict2[list(df2[i:i+1].UNAME)[0]].append((list(df2[i:i+1].AGR_NAME)[0]))
     
     # Output file1
-    out1 = pd.DataFrame(list(dict1.items()),columns = ['ACCOUNT_NAME','ENTITLEMENT VALUE']) 
+    out1 = pd.DataFrame(list(dict1.items()),columns = ['UNAME','AGR_NAME']) 
 
     # Output file2
     rows = []
-    for item in list(out1.ACCOUNT_NAME):
+    for item in list(out1.UNAME):
         row = []
         row.append(item)
         row.append(dict2[item])
         rows.append(row)
 
-    out2 = pd.DataFrame(rows,columns = ['UNAME','AGR_NAME'])
+    out2 = pd.DataFrame(rows,columns = ['UNAME','AGR_NAME'] ['ACCOUNT_NAME','ENTITLEMENT VALUE'])
     
     cach_1 = out1
     cach_2 = out2
@@ -71,8 +71,8 @@ with gr.Blocks() as demo:
         This Space matches information in two spreadsheets.
         following file format supported:
         - Only supporte files having extension .xlsx , .csv , .txt
-        - Input File-1 / Campaign_SOX_Audit_Response should be having two columns named as 'ACCOUNT_NAME' & 'ENTITLEMENT VALUE'
-        - Input File-2 / SA_SP1 should be having two columns named as 'AGR_NAME' & 'UNAME'
+        - Input File-1 / SAP_SP1_Data should be having two columns named as 'UNAME' & 'AGR_NAME'
+        - Input File-2 / AccessNow_Data should be having two columns named as 'ACCOUNT_NAME' & 'ENTITLEMENT VALUE'
         """)
     with gr.Accordion(label="Limitations", open=False):
         gr.Markdown("""
@@ -85,8 +85,8 @@ with gr.Blocks() as demo:
     with gr.Tab("Upload the files"):
         gr.Markdown("##")
         with gr.Row():
-            inp1 = gr.File(label="Input File-1 / Campaign_SOX_Audit_Response",file_types=['.xlsx','.csv','.txt'],interactive=True)
-            inp2 = gr.File(label="Input File-2 / SA_SP1",file_types=['.xlsx','.csv','.txt'],interactive=True)
+            inp1 = gr.File(label="Input File-1 / SAP_SP1_Data",file_types=['.xlsx','.csv','.txt'],interactive=True)
+            inp2 = gr.File(label="Input File-2 / AccessNow_Data",file_types=['.xlsx','.csv','.txt'],interactive=True)
 
         with gr.Row():
             gen_btn = gr.Button(" File Compare ")
@@ -101,7 +101,7 @@ with gr.Blocks() as demo:
                 dataset_display,
                 inputs=[inp1,inp2],
                 outputs=[gr.Dataframe(
-                        label = "Processed File-1 / Campaign_SOX_Audit_Response",
+                        label = "Processed File-1 / SAP_SP1_Data",
                         headers=['UNAME', 'AGR_NAME'],
                         datatype=["str", "str"],
                         col_count=(2, "fixed"),
@@ -109,7 +109,7 @@ with gr.Blocks() as demo:
                         show_progress = True
                 ),
                         gr.Dataframe(
-                        label = "Processed File-2 / SA_SP1",
+                        label = "Processed File-2 / AccessNow_Data",
                         headers=['ACCOUNT_NAME', 'ENTITLEMENT VALUE'],
                         datatype=["str", "str"],
                         col_count=(2, "fixed"),
