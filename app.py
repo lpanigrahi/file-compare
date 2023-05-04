@@ -105,16 +105,16 @@ with gr.Blocks() as demo:
                         headers=['UNAME', 'AGR_NAME'],
                         datatype=["str", "str"],
                         col_count=(2, "fixed"),
-                        scroll_to_output= True,
-                        show_progress = True
+                        max_rows = 15,
+                        overflow_row_behaviour = "paginate"
                 ),
                         gr.Dataframe(
                         label = "Processed File-2 / AccessNow_Data",
                         headers=['ACCOUNT_NAME', 'ENTITLEMENT VALUE'],
                         datatype=["str", "str"],
                         col_count=(2, "fixed"),
-                        scroll_to_output= True,
-                        show_progress = True
+                        max_rows=15,
+                        overflow_row_behaviour = "paginate"
                             )]
                             
             )
