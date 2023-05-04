@@ -11,6 +11,7 @@ cach_2 = pd.DataFrame()
 
 
 def dataset_display(file1,file2):
+    print('Processing Start')
     global cach_1
     global cach_2
 
@@ -41,7 +42,7 @@ def dataset_display(file1,file2):
     
     # Output file1
     out1 = pd.DataFrame(list(dict1.items()),columns = ['UNAME','AGR_NAME']) 
-
+    print('Out1 processed')
     # Output file2
     rows = []
     for item in list(out1.UNAME):
@@ -51,10 +52,10 @@ def dataset_display(file1,file2):
         rows.append(row)
 
     out2 = pd.DataFrame(rows,columns = ['ACCOUNT_NAME','ENTITLEMENT VALUE'])
-    
+     print('Out2 processed')
     cach_1 = out1
     cach_2 = out2
-
+    print('Processing Finished)
     return out1,out2
 
 def export_csv():
@@ -103,7 +104,7 @@ with gr.Blocks() as demo:
                 outputs=[gr.Dataframe(
                         label = "Processed File-1 / SAP_SP1_Data",
                         headers=['UNAME', 'AGR_NAME'],
-                        datatype=["str", "str"],
+                        datatype=["str", "list[str]"],
                         col_count=(2, "fixed"),
                         max_rows = 15,
                         overflow_row_behaviour = "paginate"
@@ -111,7 +112,7 @@ with gr.Blocks() as demo:
                         gr.Dataframe(
                         label = "Processed File-2 / AccessNow_Data",
                         headers=['ACCOUNT_NAME', 'ENTITLEMENT VALUE'],
-                        datatype=["str", "str"],
+                        datatype=["str", "list[str]"],
                         col_count=(2, "fixed"),
                         max_rows=15,
                         overflow_row_behaviour = "paginate"
