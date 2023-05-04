@@ -62,7 +62,7 @@ def dataset_display(file1,file2):
     print('Out2 processed')
     cach_2 = out2
     print('Processing Finished')
-    return out2
+    return out2[30:60]
 
 def export_csv():
 
