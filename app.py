@@ -52,7 +52,7 @@ def dataset_display(file1,file2):
         rows.append(row)
 
     out2 = pd.DataFrame(rows,columns = ['ACCOUNT_NAME','ENTITLEMENT VALUE'])
-     print('Out2 processed')
+    print('Out2 processed')
     cach_1 = out1
     cach_2 = out2
     print('Processing Finished)
