@@ -63,7 +63,7 @@ def dataset_display(file1,file2):
     rows.append(row)
 
     out2 = pd.DataFrame(rows,columns = ['UNAME','ACCOUNT_NAME','AGRNAME','MISSING ENTITLEMENT VALUE'])
-    print('Out2 processed'
+    print('Out2 processed')
     cach_2 = out2
     print('Processing Finished')
     return out2
@@ -111,8 +111,8 @@ with gr.Blocks() as demo:
                 dataset_display,
                 inputs=[inp1,inp2],
                 outputs=[gr.Dataframe(
-                        label = "Processed File-1 / SAP_SP1_Data",
-                        headers=['UNAME', 'AGR_NAME'],
+                        label = "File Compare Data",
+                        headers=['UNAME','ACCOUNT_NAME','AGRNAME','MISSING ENTITLEMENT VALUE'],
                         datatype=["str", "str","str", "str"],
                         col_count=(4, "fixed"),
                         max_rows = 30,
