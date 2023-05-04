@@ -104,7 +104,7 @@ with gr.Blocks() as demo:
                 outputs=[gr.Dataframe(
                         label = "Processed File-1 / SAP_SP1_Data",
                         headers=['UNAME', 'AGR_NAME'],
-                        datatype=["str", "list[str]"],
+                        datatype=["str", "str"],
                         col_count=(2, "fixed"),
                         max_rows = 15,
                         overflow_row_behaviour = "paginate"
@@ -112,7 +112,7 @@ with gr.Blocks() as demo:
                         gr.Dataframe(
                         label = "Processed File-2 / AccessNow_Data",
                         headers=['ACCOUNT_NAME', 'ENTITLEMENT VALUE'],
-                        datatype=["str", "list[str]"],
+                        datatype=["str", "str"],
                         col_count=(2, "fixed"),
                         max_rows=15,
                         overflow_row_behaviour = "paginate"
