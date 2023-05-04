@@ -114,8 +114,8 @@ with gr.Blocks() as demo:
                         headers=['UNAME','ACCOUNT_NAME','AGRNAME','MISSING ENTITLEMENT VALUE'],
                         datatype=["str", "str","str", "str"],
                         col_count=(4, "fixed"),
-                        max_rows = 30
-                )
+                        max_rows = 30)]
+             )
 
         gen_btn_2.click(export_csv, csv2)
 
