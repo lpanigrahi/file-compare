@@ -31,13 +31,13 @@ def dataset_display(file1,file2):
                 dict1[list(df1[i:i+1].UNAME)[0]].append((list(df1[i:i+1].AGR_NAME)[0]))
 
         except:
-            df2=pd.read_csv(file1.name,dtype=str)
-            for i in range(len(df1.index)):
-                dict1[list(df1[i:i+1].ACCOUNT_NAME)[0]].append((list(df1[i:i+1]['ENTITLEMENT VALUE'])[0]))
-
-            df1=pd.read_csv(file2.name,dtype=str)
+            df2=pd.read_csv(file2.name,dtype=str)
             for i in range(len(df2.index)):
-                dict2[list(df2[i:i+1].UNAME)[0]].append((list(df2[i:i+1].AGR_NAME)[0]))
+                dict2[list(df2[i:i+1].ACCOUNT_NAME)[0]].append((list(df2[i:i+1]['ENTITLEMENT VALUE'])[0]))
+
+            df1=pd.read_csv(file1.name,dtype=str)
+            for i in range(len(df1.index)):
+                dict1[list(df1[i:i+1].UNAME)[0]].append((list(df1[i:i+1].AGR_NAME)[0]))
     
     # Output file
     rows = []
@@ -56,7 +56,7 @@ def dataset_display(file1,file2):
           else:
             row.append(list(set(dict1[item]).difference(dict2[item])))
 
-    rows.append(row)
+        rows.append(row)
 
     out2 = pd.DataFrame(rows,columns = ['UNAME','ACCOUNT_NAME','AGRNAME','MISSING ENTITLEMENT VALUE'])
     print('Out2 processed')
