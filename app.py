@@ -6,7 +6,6 @@ import os
 
 from collections import defaultdict
 
-cach_1 = pd.DataFrame()
 cach_2 = pd.DataFrame()
 
 
@@ -40,10 +39,7 @@ def dataset_display(file1,file2):
             for i in range(len(df2.index)):
                 dict2[list(df2[i:i+1].UNAME)[0]].append((list(df2[i:i+1].AGR_NAME)[0]))
     
-    # Output file1
-#     out1 = pd.DataFrame(list(dict1.items()),columns = ['UNAME','AGR_NAME']) 
-    print('Out1 processed')
-    # Output file2
+    # Output file
     rows = []
     for item in list(dict1.keys()):
         row = []
@@ -70,8 +66,8 @@ def dataset_display(file1,file2):
 
 def export_csv():
 
-    cach_2.to_csv("Processed_output.xlsx")
-    return gr.File.update(value="Processed_output.xlsx", visible=True)
+    cach_2.to_csv("Processed_output.csv")
+    return gr.File.update(value="Processed_output.csv", visible=True)
 
 with gr.Blocks() as demo:
     gr.Markdown("# xlCompare ")
@@ -113,11 +109,11 @@ with gr.Blocks() as demo:
                         label = "File Compare Data",
                         headers=['UNAME','ACCOUNT_NAME','AGRNAME','MISSING ENTITLEMENT VALUE'],
                         datatype=["str", "str","str", "str"],
-                        col_count=(4, "fixed"),
-                        max_rows = 30)]
+                        col_count=(4, "fixed")]
+#                         max_rows = 30)]
              )
 
-        gen_btn_2.click(export_csv, csv2)
+        gen_btn_2.click(export_csv, outputs=[csv2])
 
 if __name__ == "__main__":
     demo.launch(server_name='0.0.0.0',server_port=7000)
