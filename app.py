@@ -46,19 +46,19 @@ def dataset_display(file1,file2):
     # Output file2
     rows = []
     for item in list(dict1.keys()):
-    row = []
-    row.append(item)
-    if dict2[item] == []:
-      row.append(['Missing-Value'])
-      row.append(dict1[item])
-      row.append(['No_AccessNow_Data'])
-    else:
-      row.append(item)
-      row.append(dict1[item])
-      if (list(set(dict1[item]).difference(dict2[item]))) == []:
-        row.append(['Matches'])
-      else:
-        row.append(list(set(dict1[item]).difference(dict2[item])))
+        row = []
+        row.append(item)
+        if dict2[item] == []:
+          row.append(['Missing-Value'])
+          row.append(dict1[item])
+          row.append(['No_AccessNow_Data'])
+        else:
+          row.append(item)
+          row.append(dict1[item])
+          if (list(set(dict1[item]).difference(dict2[item]))) == []:
+            row.append(['Matches'])
+          else:
+            row.append(list(set(dict1[item]).difference(dict2[item])))
 
     rows.append(row)
 
