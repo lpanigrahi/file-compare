@@ -103,7 +103,6 @@ with gr.Blocks() as demo:
 
         with gr.Row():
             gen_btn_2 = gr.Button(" File Download ")
-#             csv1 = gr.File(interactive=False, visible=False)
             csv2 = gr.File(interactive=False, visible=False)
 
         with gr.Row():    
@@ -117,19 +116,8 @@ with gr.Blocks() as demo:
                         col_count=(4, "fixed"),
                         max_rows = 30
                 )
-#                         overflow_row_behaviour = "paginate"
-#                 ),
-#                         gr.Dataframe(
-#                         label = "Processed File-2 / AccessNow_Data",
-#                         headers=['ACCOUNT_NAME', 'ENTITLEMENT VALUE'],
-#                         datatype=["str", "str"],
-#                         col_count=(2, "fixed"),
-#                         max_rows=15,
-#                         overflow_row_behaviour = "paginate"
-#                             )]
-                            
-#             )
-        gen_btn_2.click(export_csv, outputs=csv2)
+
+        gen_btn_2.click(export_csv, csv2)
 
 if __name__ == "__main__":
     demo.launch(server_name='0.0.0.0',server_port=7000)
