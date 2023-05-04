@@ -115,7 +115,8 @@ with gr.Blocks() as demo:
                         headers=['UNAME','ACCOUNT_NAME','AGRNAME','MISSING ENTITLEMENT VALUE'],
                         datatype=["str", "str","str", "str"],
                         col_count=(4, "fixed"),
-                        max_rows = 30,
+                        max_rows = 30
+                )
 #                         overflow_row_behaviour = "paginate"
 #                 ),
 #                         gr.Dataframe(
@@ -127,7 +128,7 @@ with gr.Blocks() as demo:
 #                         overflow_row_behaviour = "paginate"
 #                             )]
                             
-            )
+#             )
         gen_btn_2.click(export_csv, outputs=csv2)
 
 if __name__ == "__main__":
