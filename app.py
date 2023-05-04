@@ -109,7 +109,7 @@ with gr.Blocks() as demo:
                         label = "File Compare Data",
                         headers=['UNAME','ACCOUNT_NAME','AGRNAME','MISSING ENTITLEMENT VALUE'],
                         datatype=["str", "str","str", "str"],
-                        col_count=(4, "fixed")]
+                        col_count=(4, "fixed"))]
 #                         max_rows = 30)]
              )
 
