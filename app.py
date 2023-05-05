@@ -126,4 +126,4 @@ with gr.Blocks() as demo:
         gen_btn_2.click(export_csv, outputs=[csv2])
 
 if __name__ == "__main__":
-    demo.launch(server_name='0.0.0.0', server_port=8000)
+    demo.launch(server_name='0.0.0.0', server_port=7000)
